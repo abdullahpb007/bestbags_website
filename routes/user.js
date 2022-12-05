@@ -120,7 +120,7 @@ router.get("/profile", middleware.isLoggedIn, async (req, res) => {
   const errorMsg = req.flash("error")[0];
   try {
     // find all orders of this user
-    allOrders = await Order.find({ user: req.user });
+    let allOrders = await Order.find({ user: req.user });
     res.render("user/profile", {
       orders: allOrders,
       errorMsg,
